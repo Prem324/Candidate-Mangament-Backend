@@ -20,7 +20,9 @@ router.get("/", async (req, res) => {
   }
 
   if (gender) query.gender = gender;
-  if (experience) query.experience = experience;
+
+  if (experience) query.experience = `${experience} Years`;
+
   if (skills) query.skills = { $all: skills.split(",") };
 
   const total = await Candidate.countDocuments(query);
